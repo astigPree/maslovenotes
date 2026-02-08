@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% comment %} Icon svg of the website {% endcomment %}
+    <link rel="icon" href="{% static 'assets/web-icon.svg' %}" type="image/svg+xml">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masbate Notes</title>
+
+    <link rel="stylesheet" href="{% static 'css/screens/StylesBase.css' %}">
+    
+    {% block headblock %}
+        
+    {% endblock headblock %} 
+    
+    <style>
+        #root {
+            background-image: url("{% static 'assets/background.jpg' %}");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+    </style>
+
+
+</head>
+<body id="root">
+{% block bodyblock %}
+    
+{% endblock bodyblock %}
+
+
+{% block components %}
+ 
+{% endblock components %}
+
+</body>
+</html>

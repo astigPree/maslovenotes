@@ -1,0 +1,19 @@
+<button 
+    class="write-notes-button" style="{{styles}}" 
+    {% if write_url %}
+        onclick="window.location='{{write_url}}'"
+    {% endif %}
+    id="write_note_button"
+    
+>
+    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M23.344 4.78125L19.938 7.84425C19.938 7.84425 21.063 8.53225 22.094 9.50025C23.094 10.4692 23.813 11.5632 23.813 11.5632L26.719 8.09425C26.719 8.09425 26.688 7.46925 25.313 6.12525C23.907 4.78125 23.344 4.78125 23.344 4.78125ZM12.25 21.9382L12.094 23.4382L22.907 12.1882C22.907 12.1882 22.188 11.1882 21.313 10.3442C20.407 9.46925 19.375 8.78125 19.375 8.78125L8.562 20.0312L10.25 19.9373L10.438 21.7502L12.25 21.9382ZM5 26.7192L7.688 21.2192L9.188 21.0942L9.313 22.8132L11.126 23.0632L10.938 24.4382L5.5 27.1882L5 26.7192Z" fill="#FFE5D9"/>
+    </svg>  
+    <span class="grandstander-extra-bold-font">
+        {% if button_text %}
+            {{ button_text }}
+        {% else %}
+             Write your Notes! 
+        {% endif %} 
+    </span> 
+</button>

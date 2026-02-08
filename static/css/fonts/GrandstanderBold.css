@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'Grandstander';
+    src: url('/static/fonts/Grandstander-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+} 
+
+.grandstander-bold-font {
+    font-family: 'Grandstander', cursive;
+}

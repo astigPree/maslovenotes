@@ -1,0 +1,67 @@
+
+
+# Windows thumbnail cache files
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+
+# Dump file
+*.stackdump
+
+# Folder config file
+[Dd]esktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+
+*.sqlite3
+
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+
+# Local History for Visual Studio Code
+.history/
+
+# Built Visual Studio Code Extensions
+*.vsix
+
+#environments
+.vscode/
+.venv/
+venv/
+.env
+
+static/raw-characters
+
+
+#migrations
+frontend/migrations/
+api/migrations/
+staticfiles
+
+#pycache
+__pycache__/
+
+
+# media
+media/
+
+test.py
+test.pdf
+test.json
+test2.py

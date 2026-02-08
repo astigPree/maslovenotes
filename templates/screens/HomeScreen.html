@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block headblock %}
+
+<link rel="stylesheet" href="{% static 'css/fonts/Pacifico.css' %}">
+<link rel="stylesheet" href="{% static 'css/fonts/GrandstanderRegular.css' %}">
+<link rel="stylesheet" href="{% static 'css/fonts/GrandstanderLight.css' %}">
+<link rel="stylesheet" href="{% static 'css/fonts/GrandstanderExtraBold.css' %}">
+<link rel="stylesheet" href="{% static 'css/fonts/GrandstanderBold.css' %}">
+
+<link rel="stylesheet" href="{% static 'css/components/StylesIncorrectLayout.css' %}">
+<link rel="stylesheet" href="{% static 'css/components/StylesBoardBackground.css' %}">
+<link rel="stylesheet" href="{% static 'css/components/StylesHomeScreenTicket.css' %}">
+<link rel="stylesheet" href="{% static 'css/components/StylesWriteNotesButton.css' %}">
+<link rel="stylesheet" href="{% static 'css/components/StylesCreatorArea.css' %}">
+
+<link rel="stylesheet" href="{% static 'css/screens/StylesHomeScreen.css' %}">
+
+{% endblock headblock %}
+
+{% block bodyblock %}
+
+
+<section class="home-screen">
+    <div class="home-screen-wrapper">
+                
+        <h1 class="home-screen-title pacifico-font">Maslove Notes</h1>
+        <p class="home-screen-description grandstander-regular-font">
+            {{quote}}
+        </p>
+
+        <div class="board-outline">
+            <div class="board-outline-wrapper">
+                
+                {% include 'components/BoardBackground.html' %}
+                
+                <div class="board-notes-container">
+                    
+                    {% for note in notes %} 
+                        {% include 'components/HomeScreenTicket.html' with title=note.title content=note.content created_at=note.created_at image_url=note.image note_id=note.pk %}
+                    {% endfor %} 
+                    
+                </div>
+
+
+            </div>
+        </div>
+
+        {% include 'components/WriteNotesButton.html' with write_url=write_url styles="margin-top: 18px;" %}
+
+
+        {% include 'components/CreatorArea.html' %}
+
+    </div>
+
+</section>
+
+
+
+
+{% endblock bodyblock %}
+
+
+
+{% block components %}
+
+    {% include 'components/IncorrectLayout.html' %}
+
+{% endblock components %}
+    

@@ -1,0 +1,23 @@
+{% load static %}
+<div class="home-screen-ticket">
+
+    {% if image_url != "NONE" %}
+        <img src="{{image_url}}" alt="">
+    {% endif %}
+    
+
+    <div class="home-screen-ticket-content" onclick="window.location='{% url 'ViewerPage' note_id    %}'">
+        <span class="home-screen-ticket-content__pin"></span>
+
+        <h2 class="grandstander-regular-font">{{ title }}</h2>
+        <p class="grandstander-light-font">{{content}}</p>
+
+        <span class="home-screen-ticket-content__date">{{created_at}}</span>
+
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7.94082 2.94941L10.7733 5.46715C11.3028 5.93781 11.5676 6.17316 11.6651 6.45107C11.7508 6.69512 11.7508 6.96102 11.6651 7.20507C11.5676 7.48297 11.3028 7.71832 10.7733 8.18901L7.94082 10.7067C7.70053 10.9203 7.58035 11.0271 7.47833 11.031C7.38967 11.0343 7.30455 10.996 7.2481 10.9276C7.18318 10.8488 7.18318 10.688 7.18318 10.3665V8.77896C5.80155 8.77896 4.34228 9.22274 3.27673 10.0104C2.722 10.4205 2.44462 10.6256 2.33898 10.6175C2.23601 10.6096 2.17065 10.5694 2.11722 10.481C2.06241 10.3904 2.11082 10.107 2.20765 9.54042C2.8364 5.86105 5.36849 4.87717 7.18318 4.87717V3.28964C7.18318 2.96814 7.18318 2.80739 7.2481 2.72858C7.30455 2.66011 7.38967 2.62188 7.47833 2.6252C7.58035 2.62902 7.70053 2.73582 7.94082 2.94941Z" fill="#F26A8D" fill-opacity="0.8"/>
+        </svg>
+
+    </div>
+
+</div>

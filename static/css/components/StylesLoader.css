@@ -1,0 +1,163 @@
+.loader{ 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader-wrapper{ 
+    box-sizing: border-box;
+    width: 265px;
+    height: fit-content;
+    padding-bottom: 24px;
+    background: #FADADD;
+    border: 1px solid #5A2A3A;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.loader-wrapper h2{   
+    font-size: 14px; 
+    letter-spacing: 0.02em; 
+    margin-top: 34px;
+    color: rgba(0, 0, 0, 0.7); 
+}
+.loader-wrapper h2.--success{
+    color: rgba(18, 78, 7, 0.7);
+}
+.loader-wrapper h2.--error{
+    color: rgba(78,7, 7, 0.7);
+}
+
+.loader-progress-bar{
+    width: 85%;
+    height: fit-content;  
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0px;
+    position: relative;
+    height: 34px;
+}
+
+.loader-progress-bar.collapsed{
+    display: none !important;
+}
+
+.loader-progress-bar div{
+    width: 90%; 
+    height: 1px; 
+    background: #5A2A3A; 
+}
+
+@keyframes loaderLeftAndRightRepeatedAnimation {
+    0% {
+        left: 0;
+    }
+    50% {
+        left: 90%;
+    }
+    100% {
+        left: 0;
+    }
+    
+}
+
+.loader-progress-bar-svg{
+    position: absolute;
+    left: 0;
+    top: 0;
+    animation: loaderLeftAndRightRepeatedAnimation 3s infinite linear both -0.5s;
+}
+
+.loader-descriptions{
+    width: 70%;
+    height: fit-content;
+    margin-top: 5px; 
+    font-size: 11px;
+    line-height: 13px; 
+    text-align: center;
+    letter-spacing: 0.02em; 
+    color: rgba(90, 42, 58, 0.7);
+
+}
+
+.loader-success-buttons{
+    width: 80%;
+    display: flex;
+    height: fit-content;
+    justify-content: space-between;
+    margin-top: 12px;
+}
+
+
+.loader-success-buttons.collapsed{
+    display: none !important;
+}
+
+.loader-success-buttons button{
+    width: 45%;
+    height: fit-content;
+    box-sizing: border-box;
+    padding: 6px 0px;
+    transition: opacity 0.2s ease-in-out;
+}
+
+
+.loader-success-buttons button:active{
+    opacity: 0.5;
+}
+
+.loader-success-download-qr{ 
+    background: #F26A8D;
+    border: 1px solid #FFFFFF;
+    border-radius: 4px; 
+    font-size: 12px; 
+    letter-spacing: 0.02em; 
+    color: #FFFFFF; 
+}
+
+.loader-success-additional{ 
+    background: #5A2A3A;
+    border: 1px solid #FFFFFF;
+    border-radius: 4px; 
+    font-size: 12px; 
+    text-align: center;
+    letter-spacing: 0.02em; 
+    color: #FFFFFF; 
+
+}
+
+.loader-error-button{
+    width: fit-content;
+    height: fit-content;
+    box-sizing: border-box;
+    padding: 6px 8px;
+    transition: opacity 0.2s ease-in-out;
+    background: #5A2A3A;
+    border: 1px solid #FFFFFF;
+    border-radius: 4px; 
+    font-size: 12px; 
+    text-align: center;
+    letter-spacing: 0.02em; 
+    color: #FFFFFF;  
+}
+
+
+.loader-error-button.collapsed{
+    display: none !important;
+}
+
+
+.loader-error-button:active{
+    opacity: 0.5;
+}
