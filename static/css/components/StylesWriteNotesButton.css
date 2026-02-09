@@ -14,6 +14,7 @@
     justify-content: center;
     column-gap: 4px;
     transition: box-shadow 0.2s ease-in-out;
+    margin-bottom: 24px;
 }
 .write-notes-button svg{
 
@@ -28,3 +29,54 @@
 .write-notes-button:active{
     box-shadow: none;
 }
+
+
+.image-drawer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999999;
+}
+
+.image-drawer-capture{
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-drawer-wrapper{
+    width: 250px;
+    height: 250px; 
+    margin: 24px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFFFFF;
+    position: relative;
+    border: 1px solid #5A2A3A;
+}
+
+#qr_code_holder{ 
+    width: 180px;
+    height: 180px;
+}
+
+#qr_code_title{
+    position: absolute;
+    width: 100%;
+    font-size: 14px;
+    text-align: center;
+    bottom: 8px;
+    right: 0;
+    color: #F26A8D;
+}
+

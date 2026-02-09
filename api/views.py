@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse 
+from frontend.models import Note, Qoute, ImageKey
 # Create your views here.
 
 
@@ -69,7 +70,10 @@ def api_write_note(request):
                 'message' : 'Please provide a correct image key.'
             } , status=400)
     
-    if isinstance(image_file , object):
+    
+    image_key_obj = None
+    
+    if isinstance(image_file , object) and image_file is not None:
         
         if not isinstance(image_key , str):
             return JsonResponse({
@@ -91,13 +95,47 @@ def api_write_note(request):
             return JsonResponse({
                 'message': 'Image file too large. Maximum size is 1 MB.'
             }, status=400)
-             
-    
+        
+        image_key_obj = ImageKey.objects.filter(key=image_key).first()
+        
+        if not image_key_obj:
+            return JsonResponse({
+                'message' : 'Please provide a valid image key.'
+            } , status=400)
+        
+        if image_key_obj.is_used:
+            return JsonResponse({
+                'message' : 'The image key is already in use. Try another image key.'
+            } , status=400)
+        
+        image_key_obj.is_used = True
+        image_key_obj.save()
+        
+    # save the image
+    note_id = None
+    if image_key_obj:
+        note = Note.objects.create(
+            title=title_text , 
+            content=content_text ,
+            image=image_file , 
+            image_key=image_key_obj
+        )
+        note_id = note.pk
+    else:
+        note = Note.objects.create(
+            title=title_text , 
+            content=content_text 
+        )
+        note_id = note.pk
      
-    
+    base_url = request.build_absolute_uri('/')
+    qr_code_url = base_url + 'notes/' + str(note_id) 
     
     return JsonResponse({
-        'message' : 'You can now download the QR code to share your note with your friends.'
+        'message' : 'You can now download the QR code to share your note with your friends.',
+        'note_id' : note_id,
+        'qr_code_url' : qr_code_url,
+        'title' : 'Maslove Notes'
     } , status=201)
 
 

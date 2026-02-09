@@ -4,7 +4,6 @@ from django.utils import timezone
 
 
 
-
 class ImageKey(models.Model):
     key = models.CharField(max_length=50 , default="" , unique=True)
     is_used = models.BooleanField(default=False)

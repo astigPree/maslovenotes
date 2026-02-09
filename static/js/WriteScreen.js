@@ -65,8 +65,13 @@ const loader_progress_bar = document.getElementById("loader_progress_bar");
 const loader_result_text = document.getElementById("loader_result_text");
 const loader_success_button = document.getElementById("loader_success_button");
 const loader_error_button = document.getElementById("loader_error_button");
+const qr_code_holder = document.getElementById("qr_code_holder");
+const qr_code_title = document.getElementById("qr_code_title");
+const image_drawer = document.getElementById("image_drawer");
+const image_drawer_wrapper = document.getElementById("image_drawer_wrapper");
 
 let has_image = false;
+let return_data = null;
 
 write_note_button.addEventListener("click", async()=>{
     if (write_note_button.disabled) return;
@@ -132,13 +137,44 @@ write_note_button.addEventListener("click", async()=>{
     loader_success_button.classList.remove('collapsed'); 
     write_note_button.disabled = false;
     
+    return_data = {
+        note_id : data?.note_id,
+        qr_code_url : data?.qr_code_url,
+        title : data?.title
+    }
 
 });
 
 
 loader_success_button.addEventListener("click", function(e){
     const action = e?.target?.getAttribute("data-action");
-    console.log(action);
+    if (action === "download" && return_data){ 
+        image_drawer.classList.remove("--invisible"); 
+        // Generate QR code inside the div
+        new QRCode( qr_code_holder, {
+            text: return_data?.qr_code_url,
+            width: 180,
+            height: 180,
+        });
+        qr_code_title.textContent = return_data?.title || "Maslove Notes";
+
+        domtoimage.toPng(image_drawer_wrapper)
+        .then(dataUrl => {
+            const link = document.createElement("a");
+            link.download = "note.png";
+            link.href = dataUrl;
+            link.click();
+            image_drawer.classList.add("--invisible");
+        })
+        .catch(err => {
+            console.error(err);
+            image_drawer.classList.add("--invisible");
+        });
+ 
+    } else if (action === "visit" && return_data){
+        window.location.href = return_data?.qr_code_url;
+    }
+
 });
 
 
@@ -187,5 +223,8 @@ content_tag.addEventListener("input", () => {
     content_tag.style.height = "auto";
     content_tag.style.height = content_tag.scrollHeight + "px";
 });
+
+ 
+
 
 })();

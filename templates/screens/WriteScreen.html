@@ -19,6 +19,9 @@
 
 <link rel="stylesheet" href="{% static 'css/screens/StylesWriteScreen.css' %}">
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image-more/3.7.1/dom-to-image-more.min.js"></script>
+
 <script src="{% static 'js/WriteScreen.js' %}" defer></script>
 
 {% endblock headblock %}
@@ -92,7 +95,7 @@
 
         {% include 'components/WriteNotesButton.html' with styles="margin-top: 18px;" button_text="Upload your Notes?" %}
 
-        {% include 'components/CreatorArea.html'  %}
+        {% include 'components/CreatorArea.html' with display=display_creator  %}
 
 
 
@@ -100,19 +103,16 @@
 
 </section>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
+<section class="image-drawer --invisible" id="image_drawer">
 
+    <div class="image-drawer-capture" id="image_drawer_wrapper">
+        <div class="img-drawer-wrapper" >
+            <div id="qr_code_holder"></div>
+            <div id="qr_code_title" class="pacifico-font">Maslove Notes</div>
+        </div> 
+    </div>
 
-        {% comment %} setTimeout(() => { 
-            const notes_image_container = document.getElementById("notes_image_container");
-            notes_image_container.style.display = "flex";
-            setTimeout(() => {
-                notes_image_container.classList.add("expanded");
-            }, 500); 
-        }, 1000); {% endcomment %}
-    });
-</script>
+</section>
 
 
 {% endblock bodyblock %}
