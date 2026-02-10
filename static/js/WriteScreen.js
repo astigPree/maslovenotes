@@ -110,7 +110,7 @@ write_note_button.addEventListener("click", async()=>{
         method: "POST",
         body: formData ,
         headers: {
-            "X-CSRFToken": getCookie("csrftoken")
+            "X-CSRFToken": csrftoken
         }
     });
 

@@ -23,6 +23,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image-more/3.7.1/dom-to-image-more.min.js"></script>
 
 <script src="{% static 'js/WriteScreen.js' %}" defer></script>
+<script>
+    var csrftoken = "{{ csrf_token }}";
+</script>
 
 {% endblock headblock %}
 
