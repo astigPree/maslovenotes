@@ -1,0 +1,20 @@
+  GNU nano 7.2                    stores-web.service
+[Unit]
+Description=Maslovenotes Web Service
+After=network.target
+
+[Service]
+User=makieyot
+Group=www-data
+WorkingDirectory=/home/makieyot/makie/maslovenotes
+Environment="PATH=/home/makieyot/venv/maslovenotes/bin"
+ExecStart=/home/makieyot/venv/maslovenotes/bin/gunicorn \
+    maslovenotes.wsgi:application \
+    --bind 127.0.0.1:8200 \
+    --workers 3
+
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
