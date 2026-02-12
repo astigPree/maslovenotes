@@ -89,11 +89,11 @@ def api_write_note(request):
                 'message': 'Please provide a valid image file (.jpg, .jpeg, .png).'
             }, status=400)
              
-        # Validate file size (max 1 MB)
-        max_size = 1 * 1024 * 1024  # 1 MB in bytes
+        # Validate file size (max 2 MB) 
+        max_size = 2 * 1024 * 1024 
         if image_file.size > max_size:
             return JsonResponse({
-                'message': 'Image file too large. Maximum size is 1 MB.'
+                'message': 'Image file too large. Maximum size is 2 MB.'
             }, status=400)
         
         image_key_obj = ImageKey.objects.filter(key=image_key).first()
