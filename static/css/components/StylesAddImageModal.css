@@ -104,6 +104,11 @@
     color: #FFFFFF; 
     transition: box-shadow 0.2s ease;
 }
+.add-image-modal-button.--disable{
+    opacity: 0.5;
+    pointer-events: none;
+    
+}
 
 .add-image-modal-button:active{
     box-shadow: none;

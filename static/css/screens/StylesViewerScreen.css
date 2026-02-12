@@ -32,6 +32,7 @@
     width: 100%;
     height: fit-content;
     animation: viewerFadeIn 0.3s ease-in-out;
+    margin-bottom: 24px;
 }
 
 .viewer-screen-title { 

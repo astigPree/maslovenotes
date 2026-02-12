@@ -146,6 +146,17 @@ write_note_button.addEventListener("click", async()=>{
 });
 
 
+image_key.addEventListener("input", () => {
+    if (image_key.value.trim() == ""){
+        add_image_modal_select.classList.add("--disable");
+        add_image_modal_select.disabled = true; 
+    } else {
+        add_image_modal_select.classList.remove("--disable");
+        add_image_modal_select.disabled = false;
+    }
+})
+
+
 loader_success_button.addEventListener("click", function(e){
     const action = e?.target?.getAttribute("data-action");
     if (action === "download" && return_data){ 
