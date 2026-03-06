@@ -62,10 +62,10 @@ This project helped me strengthen my backend skills, improve deployment confiden
 ## ▶️ Running the Project  
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/maslove-notes.git
+git clone https://github.com/astigPree/maslovenotes.git
 
 # Navigate into the project
-cd maslove-notes
+cd maslovenotes
 
 # Install dependencies
 pip install -r requirements.txt
@@ -76,3 +76,6 @@ python manage.py migrate
 # Start the server
 python manage.py runserver
 ```
+
+
+
