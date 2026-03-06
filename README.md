@@ -22,7 +22,7 @@ MasLove Notes is a platform where feelings become words. It allows users to:
 ---
 
 ## 🛠️ Technologies Used  
-- **Backend:** Python, Django REST Framework, Django ORM, MySQL  
+- **Backend:** Python, Django Framework, Django ORM, MySQL  
 - **Frontend:** HTML, CSS, JavaScript  
 - **Deployment:** PythonAnywhere, Linux servers  
 - **Other:** QR Code generation, secure API workflows  
@@ -31,7 +31,7 @@ MasLove Notes is a platform where feelings become words. It allows users to:
 
 ## ⚙️ Process on How I Built It  
 1. **Requirement Gathering** – Defined the core features (anonymous posting, browsing, QR sharing).  
-2. **Backend Setup** – Built REST APIs with Django REST Framework and MySQL database.  
+2. **Backend Setup** – Built with Django Framework and MySQL database.  
 3. **Frontend Development** – Designed responsive UI with HTML, CSS, and JavaScript.  
 4. **Integration** – Connected frontend with backend APIs.  
 5. **Deployment** – Deployed on PythonAnywhere with Linux server configuration.  
@@ -40,7 +40,7 @@ MasLove Notes is a platform where feelings become words. It allows users to:
 
 ## 📚 What I Learned  
 - How to design secure, anonymous workflows.  
-- Best practices for Django ORM and REST API development.  
+- Best practices for Django ORM development.  
 - Deployment strategies using PythonAnywhere and Linux servers.  
 - Importance of user‑friendly UI/UX in engagement.  
 
@@ -77,5 +77,6 @@ python manage.py migrate
 python manage.py runserver
 ```
 
-
+## 🎥 Demo Video
+https://github.com/user-attachments/assets/0adc438f-728b-4776-b5cf-8f640aad8837
 
