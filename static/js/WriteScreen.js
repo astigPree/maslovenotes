@@ -188,6 +188,36 @@ loader_success_button.addEventListener("click", function(e){
 
 });
 
+// setTimeout(()=>{
+//     return_data = {
+//         'note_id' : 1,
+//         'qr_code_url' : 'https://maslovenotes.makie.top/',
+//         'title' : 'Visit Maslove Notes'
+//     }
+//     image_drawer.classList.remove("--invisible"); 
+//     // Generate QR code inside the div
+//     new QRCode( qr_code_holder, {
+//         text: return_data?.qr_code_url,
+//         width: 180,
+//         height: 180,
+//     });
+//     qr_code_title.textContent = return_data?.title || "Maslove Notes";
+
+//     domtoimage.toPng(image_drawer_wrapper)
+//     .then(dataUrl => {
+//         const link = document.createElement("a");
+//         link.download = "note.png";
+//         link.href = dataUrl;
+//         link.click();
+//         image_drawer.classList.add("--invisible");
+//     })
+//     .catch(err => {
+//         console.error(err);
+//         image_drawer.classList.add("--invisible");
+//     });
+ 
+// }, 1000);
+
 
 loader_error_button.addEventListener("click", () => {
     loader.classList.add("--invisible");
