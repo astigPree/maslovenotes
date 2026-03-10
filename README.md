@@ -79,4 +79,3 @@ python manage.py runserver
 
 ## 🎥 Demo Video
 https://github.com/user-attachments/assets/0adc438f-728b-4776-b5cf-8f640aad8837
-
