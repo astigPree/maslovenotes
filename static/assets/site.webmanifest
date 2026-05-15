@@ -1,0 +1,23 @@
+{
+  "name": "MasLove Notes",
+  "short_name": "MasLove",
+  "description": "Anonymous love notes and heartfelt QR messages from Masbate, Philippines.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#FEB2B4",
+  "theme_color": "#F26A8D",
+  "icons": [
+    {
+      "src": "/static/assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/static/assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

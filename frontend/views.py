@@ -1,6 +1,11 @@
 from django.shortcuts import render, redirect
 from frontend.models import *
 from django.urls import reverse
+from django.http import HttpResponse
+from django.utils import timezone
+from xml.sax.saxutils import escape
+
+from frontend.seo import SITE_NAME, build_seo, clean_summary
 
 # Get the base user model and rely on the first name if want to display the creator component
 from django.contrib.auth.models import User
@@ -38,7 +43,8 @@ def HomePage(request):
     return render(request, 'screens/HomeScreen.html' , {
         'notes': note_data, 'quote': quote_text,
         'write_url': reverse('WritePage'),
-        'display_creator': display_creator
+        'display_creator': display_creator,
+        'seo': build_seo(request),
         
     })
 
@@ -73,6 +79,16 @@ def ViewerPage(request , pk):
             if user.first_name == 'open':
                 display_creator = True
         context['display_creator'] = display_creator
+        context['seo'] = build_seo(
+            request,
+            title=f"{clean_summary(note.title, 55)} | {SITE_NAME}",
+            description=(
+                f"{clean_summary(note.content, 120)} Read this anonymous "
+                "MasLove Notes message from Masbate, Philippines."
+            ),
+            page_type="article",
+            robots="noindex,follow",
+        )
     except:
         # If the note does not exist, redirect to HomePage
         return redirect('HomePage')
@@ -89,5 +105,56 @@ def WritePage(request):
     except:
         pass
     return render(request, 'screens/WriteScreen.html' , { 
-        'display_creator': display_creator
+        'display_creator': display_creator,
+        'seo': build_seo(
+            request,
+            title=f"Write an Anonymous Love Note | {SITE_NAME}",
+            description=(
+                "Create a heartfelt anonymous note for someone special in "
+                "Masbate, Philippines, then share it through a QR code."
+            ),
+        ),
     })
+
+
+def RobotsTxt(request):
+    sitemap_url = request.build_absolute_uri(reverse('SitemapXml'))
+    content = "\n".join([
+        "User-agent: *",
+        "Allow: /",
+        "Disallow: /api/",
+        "",
+        f"Sitemap: {sitemap_url}",
+    ])
+    return HttpResponse(content, content_type="text/plain")
+
+
+def SitemapXml(request):
+    today = timezone.localdate().isoformat()
+    urls = [
+        {
+            "loc": request.build_absolute_uri(reverse('HomePage')),
+            "lastmod": today,
+            "changefreq": "daily",
+            "priority": "1.0",
+        },
+        {
+            "loc": request.build_absolute_uri(reverse('WritePage')),
+            "lastmod": today,
+            "changefreq": "weekly",
+            "priority": "0.8",
+        },
+    ]
+
+    xml = ['<?xml version="1.0" encoding="UTF-8"?>']
+    xml.append('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">')
+    for item in urls:
+        xml.append("  <url>")
+        xml.append(f"    <loc>{escape(item['loc'])}</loc>")
+        xml.append(f"    <lastmod>{item['lastmod']}</lastmod>")
+        xml.append(f"    <changefreq>{item['changefreq']}</changefreq>")
+        xml.append(f"    <priority>{item['priority']}</priority>")
+        xml.append("  </url>")
+    xml.append("</urlset>")
+
+    return HttpResponse("\n".join(xml), content_type="application/xml")

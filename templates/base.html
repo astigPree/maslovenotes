@@ -3,10 +3,36 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    {% comment %} Icon svg of the website {% endcomment %}
-    <link rel="icon" href="{% static 'assets/web-icon.svg' %}" type="image/svg+xml">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Masbate Notes</title>
+    <title>{{ seo.title|default:"MasLove Notes | Anonymous Love Notes in Masbate, Philippines" }}</title>
+    <meta name="description" content="{{ seo.description|default:"Write anonymous love notes, read heartfelt messages from Masbate, Philippines, and share each note through a QR code." }}">
+    <meta name="keywords" content="{{ seo.keywords|default:"MasLove Notes, Masbate love notes, anonymous love notes, heartfelt messages, QR code notes, Masbate Philippines" }}">
+    <meta name="robots" content="{{ seo.robots|default:"index,follow" }}">
+    <meta name="author" content="MasLove Notes">
+    <meta name="theme-color" content="#F26A8D">
+    <meta name="application-name" content="MasLove Notes">
+    <meta name="apple-mobile-web-app-title" content="MasLove Notes">
+    <link rel="canonical" href="{{ seo.canonical_url|default:request.build_absolute_uri }}">
+
+    <meta property="og:site_name" content="MasLove Notes">
+    <meta property="og:type" content="{{ seo.type|default:"website" }}">
+    <meta property="og:title" content="{{ seo.title|default:"MasLove Notes | Anonymous Love Notes in Masbate, Philippines" }}">
+    <meta property="og:description" content="{{ seo.description|default:"Write anonymous love notes, read heartfelt messages from Masbate, Philippines, and share each note through a QR code." }}">
+    <meta property="og:url" content="{{ seo.canonical_url|default:request.build_absolute_uri }}">
+    <meta property="og:image" content="{{ seo.image_url }}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="en_PH">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ seo.title|default:"MasLove Notes | Anonymous Love Notes in Masbate, Philippines" }}">
+    <meta name="twitter:description" content="{{ seo.description|default:"Write anonymous love notes, read heartfelt messages from Masbate, Philippines, and share each note through a QR code." }}">
+    <meta name="twitter:image" content="{{ seo.image_url }}">
+
+    <link rel="icon" href="{% static 'assets/favicon.ico' %}" sizes="any">
+    <link rel="icon" href="{% static 'assets/favicon.svg' %}" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="{% static 'assets/apple-touch-icon.png' %}">
+    <link rel="manifest" href="{% static 'assets/site.webmanifest' %}">
 
     <link rel="stylesheet" href="{% static 'css/screens/StylesBase.css' %}">
     
@@ -24,6 +50,9 @@
         }
     </style>
 
+    {% if seo.schema %}
+    <script type="application/ld+json">{{ seo.schema|safe }}</script>
+    {% endif %}
 
 </head>
 <body id="root">
